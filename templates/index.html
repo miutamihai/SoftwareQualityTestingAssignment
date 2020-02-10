@@ -7,32 +7,40 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+  <h3>Car insurance quotes</h3>
 </nav>
+
+<div class="jumbotron">
+  <h1 class="display-3">Welcome!</h1>
+  <p class="lead">Please input all the required data in the following section: </p>
+  <hr class="my-4">
+  <form>
+  <fieldset>
+    <div class="form-group">
+      <label for="vehicleValue">Vehicle value</label>
+      <input type="number" class="form-control" id="vehicleValue" placeholder="Enter vehicle value">
+      <small id="valueHelp" class="form-text text-muted">The value shall be inputted in euros</small>
+    </div>
+    <div class="form-group">
+      <label for="selectCover">Select cover type</label>
+      <select class="form-control" id="selectCover">
+        <option>Comprehensive</option>
+        <option>Third party</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Vehicle value</label>
+      <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter your date of birth">
+      <small id="dobHelp" class="form-text text-muted">The format should be Day/Month/Year</small>
+    </div>
+    <div class="form-group">
+      <label for="penaltyPointsValue">Vehicle value</label>
+      <input type="number" class="form-control" id="penaltyPointsValue" placeholder="Enter your penalty points">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+</div>
 
 </body>
 </html>
