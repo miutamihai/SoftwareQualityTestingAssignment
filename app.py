@@ -1,8 +1,8 @@
-from flask import Flask, render_template, url_for, request
-from dateutil.relativedelta import relativedelta
-from validation import InputForm
 from datetime import datetime
-from werkzeug.utils import redirect
+
+from dateutil.relativedelta import relativedelta
+from flask import Flask, render_template, request
+
 from config import Config
 
 app = Flask(__name__)
@@ -42,9 +42,7 @@ def result_page():
         premium += 400
     else:
         return 'No Quote POSSIBLE'
-    return str(premium)
-
-    return str(driver_age)
+    return render_template('result.html', result=premium)
 
 
 if __name__ == '__main__':
