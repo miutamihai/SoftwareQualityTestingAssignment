@@ -21,7 +21,7 @@ def result_page():
     driver_age = relativedelta(datetime.date(datetime.now()), datetime.strptime(request.form['dateOfBirth'],
                                                                                 '%Y-%m-%d')).years
     if driver_age < 18:
-        return 'No Quote POSSIBLE'
+        return render_template('result.html', result='No Quote POSSIBLE')
     global premium
     if request.form['coverType'] == 'Comprehensive':
         premium = 0.04 * int(request.form['vehicleValue'])
@@ -41,7 +41,7 @@ def result_page():
     elif 11 <= penalty_points <= 12:
         premium += 400
     else:
-        return 'No Quote POSSIBLE'
+        return render_template('result.html', result='No Quote POSSIBLE')
     return render_template('result.html', result=premium)
 
 

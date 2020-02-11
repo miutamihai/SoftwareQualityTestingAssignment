@@ -7,14 +7,22 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <h3>Car insurance quotes</h3>
+  <a href="/">
+    <h3>Car insurance quotes</h3>
+  </a>
 </nav>
 <div class="jumbotron">
     <h1 class="display-3">
         Results
     </h1>
     <hr class="my-4">
-    <h4>Your premium is: {{result}}</h4>
+    {% block content %}
+    {% if result == 'No Quote POSSIBLE'%}
+        <h4>{{result}}</h4>
+    {% else %}
+        <h4>Your premium is: {{result}}</h4>
+    {% endif %}
+    {% endblock content %}
 </div>
 </body>
 </html>
