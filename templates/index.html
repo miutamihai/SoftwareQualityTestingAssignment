@@ -18,24 +18,24 @@
   <fieldset>
     <div class="form-group">
       <label for="vehicleValue">Vehicle value</label>
-      <input type="number" class="form-control" id="vehicleValue" placeholder="Enter vehicle value">
+      <input type="number" class="form-control" id="vehicleValue" placeholder="Enter vehicle value" name="vehicleValue">
       <small id="valueHelp" class="form-text text-muted">The value shall be inputted in euros</small>
     </div>
     <div class="form-group">
       <label for="selectCover">Select cover type</label>
-      <select class="form-control" id="selectCover">
+      <select class="form-control" id="selectCover" name="coverType">
         <option>Comprehensive</option>
         <option>Third party</option>
       </select>
     </div>
     <div class="form-group">
       <label for="dateOfBirth">Date of birth</label>
-      <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter your date of birth">
+      <input type="date" class="form-control" id="dateOfBirth" placeholder="Enter your date of birth" name="dateOfBirth">
       <small id="dobHelp" class="form-text text-muted">The format should be Day/Month/Year</small>
     </div>
     <div class="form-group">
       <label for="penaltyPointsValue">Penalty Points</label>
-      <input type="number" class="form-control" id="penaltyPointsValue" placeholder="Enter your penalty points">
+      <input type="number" class="form-control" id="penaltyPointsValue" placeholder="Enter your penalty points" name="penaltyPoints">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
