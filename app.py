@@ -1,9 +1,9 @@
-from datetime import datetime
-
-from dateutil.relativedelta import relativedelta
 from flask import Flask, render_template, request
 
 from config import Config
+from functions.calculate_driver_age import calculate_driver_age
+from functions.determine_basic_premium import determine_basic_premium
+from functions.handle_penalty_points import handle_penalty_points
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -18,31 +18,16 @@ def main_page():
 
 @app.route('/', methods=['POST'])
 def result_page():
-    driver_age = relativedelta(datetime.date(datetime.now()), datetime.strptime(request.form['dateOfBirth'],
-                                                                                '%Y-%m-%d')).years
+    driver_age = calculate_driver_age(request.form['dateOfBirth'])
     if driver_age < 18:
         return render_template('result.html', result='No Quote POSSIBLE')
     global premium
-    if request.form['coverType'] == 'Comprehensive':
-        premium = 0.04 * int(request.form['vehicleValue'])
-    else:
-        premium = 0.025 * int(request.form['vehicleValue'])
+    premium = determine_basic_premium(request.form['coverType']) * int(request.form['vehicleValue'])
     if 18 <= driver_age <= 25:
         premium += premium * 0.10
     penalty_points = int(request.form['penaltyPoints'])
-    if penalty_points == 0:
-        return premium
-    elif 1 <= penalty_points <= 4:
-        premium += 100
-    elif 5 <= penalty_points <= 7:
-        premium += 200
-    elif 8 <= penalty_points <= 10:
-        premium += 300
-    elif 11 <= penalty_points <= 12:
-        premium += 400
-    else:
-        return render_template('result.html', result='No Quote POSSIBLE')
-    return render_template('result.html', result=premium)
+    premium, quote_possible = handle_penalty_points(premium=premium, penalty_points=penalty_points)
+    return render_template('result.html', result=(quote_possible is True and premium or 'No Quote POSSIBLE'))
 
 
 if __name__ == '__main__':
